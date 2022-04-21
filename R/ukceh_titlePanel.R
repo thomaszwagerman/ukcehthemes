@@ -1,5 +1,4 @@
-# UKCEH titlePanel replacement
-#'
+#' UKCEH titlePanel replacement
 #' @param title 
 #' @param windowTitle 
 #'

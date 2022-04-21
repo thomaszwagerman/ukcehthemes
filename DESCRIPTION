@@ -1,10 +1,13 @@
 Package: ukcehthemes
-Title: What the Package Does (One Line, Title Case)
+Title: Theming R Shiny Applications For UKCEH
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    person("Simon", "Rolph", , "SimRol@ceh.ac.uk", role = c("aut", "cre"))
+    person("Kate", "Randall", , "KatRan@ceh.ac.uk", role = c("aut", "cre"))
+    person("Michael", "Tso", ,"mtso@ceh.ac.uk", role = c("aut", "cre"))
+    person("Thomas", "Zwagerman", ,"thowag@ceh.ac.uk", role = c("aut", "cre"))
+Description: The generic R Shiny theme is based on bootstrap and doesn't conform to the UKCEH brand guidelines https://brandroom.ceh.ac.uk/.
+  This package adapts the default Shiny theme to fit in with other UKCEH web presences.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
@@ -12,5 +15,5 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 Imports: 
     bslib,
-    magrittr,
-    shiny
+    shiny,
+    thematic
