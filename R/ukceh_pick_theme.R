@@ -6,8 +6,8 @@
 #'
 #'
 #' @param theme name of a UKCEH theme.
-#' 
-#' @return  
+#'
+#' @return
 #' @export
 #'
 #' @examples
@@ -23,16 +23,16 @@
 #' }
 ukceh_pick_theme <- function(theme = NULL) {
   # Check that theme exists
-  if (is.null(theme) || !theme %in% allThemes()) {
+  if (is.null(theme) || !theme %in% all_themes()) {
     stop(theme, " is not an available theme. Valid themes are: ",
-         paste(allThemes(), collapse = ", "), ".")
+         paste(all_themes(), collapse = ", "), ".")
   }
-  
+
   source(paste0("themes/", theme, ".R"))
   return(get(theme))
 }
 
-allThemes <- function() {
+all_themes <- function() {
   themes <- dir("themes/")
   sub(".R", "", themes)
 }
