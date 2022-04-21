@@ -10,7 +10,7 @@ ukceh_titlePanel(apptitle = "UKCEH Shiny app")
 \item{apptitle}{the title of the app itself.}
 }
 \value{
-
+shiny tag to replace titlePanel() with
 }
 \description{
 UKCEH titlePanel replacement

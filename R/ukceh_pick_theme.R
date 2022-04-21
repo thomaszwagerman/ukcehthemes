@@ -7,7 +7,7 @@
 #'
 #' @param theme name of a UKCEH theme.
 #'
-#' @return
+#' @return a specified UKCEH bslib theme
 #' @export
 #'
 #' @examples

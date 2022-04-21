@@ -10,7 +10,7 @@ ukceh_pick_theme(theme = NULL)
 \item{theme}{name of a UKCEH theme.}
 }
 \value{
-
+a specified UKCEH bslib theme
 }
 \description{
 The result of this function should be used as the \code{theme} argument for

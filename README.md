@@ -60,9 +60,11 @@ Shiny: <https://shiny.rstudio.com/articles/layout-guide.html>.
 
 ## Incorporating the changes into your shiny app
 
-In the `/inst` folder we define various UKCEH themes. They need to be
-included in the `fluidPage()` function when defining `ui`. This is an
-example using the sidebar layout.
+In the `/themes` folder UKCEH themes are pre-defined, so there is no
+need to copy and paste or write your own. They need to be included in
+the `fluidPage()` function when defining `ui`. This is an example using
+the sidebar layout, using the `ukceh_pick_theme()` function we choose
+the “generic” UKCEH theme. This is currently the only theme available.
 
 ``` r
 ui <- fluidPage(
@@ -132,7 +134,9 @@ These settings make the most of the the existing UKCEH colour palette
 and sets the correct fonts.
 
 In this case the “base” UKCEH theme is called “generic”. Feel free to
-add your own.
+add your own. The code below is stored in the `/themes` folder, which is
+automatically loaded in when `library(ukcehthemes)` is called, so no
+need to copy and paste.
 
 ``` r
 library(bslib)
@@ -145,10 +149,13 @@ generic <- bs_theme(
   success = "#37a635",
   info = "#34b8c7",
   warning = "#F49633",
-  base_font = font_link(family = "Montserrat",href = "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap")
+  base_font = font_link(family = "Montserrat",
+                        href = "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap")
 ) |>  
   bs_add_variables("headings-font-weight" = 600)
 
+# This line is not stored in the original script, 
+# but demonstrates how to preview the theme.
 bs_theme_preview(generic)
 ```
 
@@ -184,17 +191,22 @@ logo and adds `| UK Centre for Ecology and Hydrology` after the title in
 the tab.
 
 ``` r
-ukceh_titlePanel <- function(title = "UKCEH Shiny app", windowTitle = title){
-  
-  div(
-    img(src="https://www.ceh.ac.uk/sites/default/files/images/theme/ukceh_logo_long_720x170_rgb.png",style="height: 50px;vertical-align:middle;"),
-      
-    h2(  
-      title,
-      style ='vertical-align:middle; display:inline;padding-left:40px;'
+ukceh_titlePanel <- function(apptitle = "UKCEH Shiny app") {
+  htmltools::div(
+    shiny::img(
+      src = "https://www.ceh.ac.uk/sites/default/files/images/theme/ukceh_logo_long_720x170_rgb.png",
+      style = "height: 50px;vertical-align:middle;"),
+
+    htmltools::h2(
+      apptitle,
+      style = "vertical-align:middle; display:inline;padding-left:40px;"
     ),
-    tagList(tags$head(tags$title(paste0(windowTitle," | UK Centre for Ecology & Hydrology")),
-                      tags$link(rel="shortcut icon", href="https://brandroom.ceh.ac.uk/themes/custom/ceh/favicon.ico"))),
+    htmltools::tagList(tags$head(
+      tags$title(
+        paste0(apptitle, " | UK Centre for Ecology & Hydrology")),
+      tags$link(
+        rel = "shortcut icon",
+        href = "https://brandroom.ceh.ac.uk/themes/custom/ceh/favicon.ico"))),
     style = "padding: 30px;"
   )
 }

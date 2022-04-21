@@ -10,7 +10,7 @@ ukceh_get_colours(palette_name)
 \item{palette_name}{the name of the colour palette}
 }
 \value{
-
+string of hex colour codes
 }
 \description{
 Request a UKCEH colour palette

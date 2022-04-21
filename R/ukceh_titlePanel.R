@@ -5,7 +5,7 @@
 #' "`apptitle` | UK Centre for Ecology and Hydrology", the UKCEH logo and a
 #' favicon for the browser tab.
 #'
-#' @return
+#' @return shiny tag to replace titlePanel() with
 #' @export
 #'
 #' @examples

@@ -2,7 +2,7 @@
 #'
 #' @param palette_name the name of the colour palette
 #'
-#' @return
+#' @return string of hex colour codes
 #' @export
 #'
 #' @examples
