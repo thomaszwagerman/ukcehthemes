@@ -42,28 +42,23 @@ If you have any feedback on this guide then please create an issue on this gitub
 ## Incorporating the changes into your shiny app
 
 
-In the `theme_elements.R` we define `UKCEH_theme` and `UKCEH_titlePanel`. They need to be included in the `fluidPage()` function when defining `ui`. This is an example using the sidebar layout.
-
-The simplest way to get the theme is to use the `source_url()` function in the `devtools` package to source `theme_elements.R` (as suggested by Michael Tso). Alternatively, you could copy the code from https://github.com/NERC-CEH/UKCEH_shiny_theming/blob/main/theme_elements.R?raw=TRUE and put it directly into your app.
+In the `theme_elements.R` we define `ukceh_theme`. They need to be included in the `fluidPage()` function when defining `ui`. This is an example using the sidebar layout.
 
 You need to install and load the `bslib` package. Presumably you've already installed the `shiny` package.
 
 ```{r}
-install.packages("bslib")
 library(bslib)
 library(shiny)
 ```
 
 ```
-devtools::source_url("https://github.com/NERC-CEH/UKCEH_shiny_theming/blob/main/theme_elements.R?raw=TRUE")
-
 # Define UI for application that draws a histogram
 ui <- fluidPage(
   #theme
-  theme = UKCEH_theme,
+  theme = ukceh_theme,
   
   # Application title
-  UKCEH_titlePanel("My first Shiny app"),
+  ukceh_titlePanel("My first Shiny app"),
   
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
@@ -117,7 +112,7 @@ These settings make the most of the the existing UKCEH colour palette and sets t
 
 ```
 library(bslib)
-UKCEH_theme <- bs_theme(
+ukceh_theme <- bs_theme(
   bg = "#fff",
   fg = "#292C2F",
   primary = "#0483A4",
@@ -126,11 +121,8 @@ UKCEH_theme <- bs_theme(
   info = "#34b8c7",
   warning = "#F49633",
   base_font = font_link(family = "Montserrat",href = "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap")
-)
-
-UKCEH_theme <- bs_add_variables(UKCEH_theme,
-                                # low level theming
-                                "headings-font-weight" = 600)
+) %>%  
+bs_add_variables("headings-font-weight" = 600)
 bs_theme_preview(UKCEH_theme)
 ```
 
@@ -160,8 +152,7 @@ Here is a drop in replacement of that function which also adds the UKCEH logo an
 
 
 ```
-#titlePanel replacement
-UKCEH_titlePanel <- function(title = "UKCEH Shiny app", windowTitle = title){
+ukceh_titlePanel <- function(title = "UKCEH Shiny app", windowTitle = title){
   
   div(
     img(src="https://www.ceh.ac.uk/sites/default/files/images/theme/ukceh_logo_long_720x170_rgb.png",style="height: 50px;vertical-align:middle;"),
@@ -177,7 +168,7 @@ UKCEH_titlePanel <- function(title = "UKCEH Shiny app", windowTitle = title){
 }
 ```
 
-When `UKCEH_titlePanel` is included in the Shiny app it looks like this:
+When `ukceh_titlePanel` is included in the Shiny app it looks like this:
 ![image](https://user-images.githubusercontent.com/17750766/159720789-dff9186c-7bca-437a-a487-46a57f44e014.png)
 
 Note how the favicon and tab title have changed:
