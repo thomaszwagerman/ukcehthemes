@@ -6,6 +6,9 @@
 #'
 #'
 #' @param theme Name of a UKCEH theme.
+#' 
+#' @return  
+#' @export
 #'
 #' @examples
 #' \dontrun{
@@ -16,9 +19,6 @@
 #'   server = function(input, output) { }
 #' )
 #' }
-#' @seealso The main \link{shinythemes} page for information about available
-#'   themes and more detailed examples.
-#' @export
 ukcehtheme <- function(theme = NULL) {
   # Check that theme exists
   if (is.null(theme) || !theme %in% allThemes()) {
