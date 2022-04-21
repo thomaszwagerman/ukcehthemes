@@ -4,12 +4,16 @@
 # ukcehthemes
 
 <!-- badges: start -->
+
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
 This repository was forked directly from the [UKCEH_shiny_theming
 repository](https://github.com/NERC-CEH/UKCEH_shiny_theming), to see if
 this guidance could be turned into a package. The original authors are
-Simon Rolph and Kare Randall.
+Simon Rolph and Kate Randall. Although it uses `bslib` both the name and
+functionality were heavily influenced by `shinythemes`.
 
 ## Installation
 
@@ -29,7 +33,7 @@ Add the following to the UI
 library(shiny)
 library(ukcehthemes)
 ui <- fluidPage(
-  theme = ukcehtheme("generic"),  # << add this line
+  theme = ukceh_pick_theme("generic"),  # << add this line
 
   ukceh_titlePanel("Old Faithful Geyser Data") # << replace your titlePanel() with ukceh_titlePanel()
 )
@@ -52,22 +56,18 @@ existing Shiny app or work from a example template
 <https://github.com/NERC-CEH/UKCEH_shiny_theming#examples>
 
 There are a number of different standard layouts you can use for R
-Shiny: <https://shiny.rstudio.com/articles/layout-guide.html>
-
-If you have any feedback on this guide then please create an issue on
-this gitub repository or email Simon Rolph (<SimRol@ceh.ac.uk>) and Kate
-Randall (<KatRan@ceh.ac.uk>).
+Shiny: <https://shiny.rstudio.com/articles/layout-guide.html>.
 
 ## Incorporating the changes into your shiny app
 
-In the /inst folder we define various UKCEH themes. They need to be
+In the `/inst` folder we define various UKCEH themes. They need to be
 included in the `fluidPage()` function when defining `ui`. This is an
 example using the sidebar layout.
 
 ``` r
 ui <- fluidPage(
   # Defining the ukceh elements of the theme
-  theme = ukcehtheme("generic"),
+  theme = ukceh_pick_theme("generic"),
   ukceh_titlePanel("My first Shiny app"),
   # The rest of your code...
   sidebarLayout(
@@ -213,12 +213,6 @@ A UKCEH branded version of the standard R Shiny example with some extra
 false inputs added to the sidebar.
 
 ![image](https://user-images.githubusercontent.com/17750766/159717529-08361e20-bc3e-4c27-b7d2-3967c8317613.png)
-
-Code:
-<https://github.com/NERC-CEH/UKCEH_shiny_theming/blob/main/examples/sidebar_layout.R>
-
-Live preview:
-<https://connect-apps.ceh.ac.uk/content/5f616ea7-af1a-4716-a7bf-48ac970ce788>
 
 ### Fluid page layout
 

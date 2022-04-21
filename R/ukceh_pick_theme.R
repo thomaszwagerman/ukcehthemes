@@ -5,21 +5,23 @@
 #' \code{\link[shiny]{navbarPage}}, or \code{\link[shiny]{fixedPage}}.
 #'
 #'
-#' @param theme Name of a UKCEH theme.
+#' @param theme name of a UKCEH theme.
 #' 
 #' @return  
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' if(interactive()) {
+#' library(shiny)
+#' library(ukcehthemes)
 #' shinyApp(
-#'   ui = fluidPage(theme = ukcehtheme("generic"),
+#'   ui = fluidPage(theme = ukceh_pick_theme("generic"),
 #'     ...
 #'   ),
 #'   server = function(input, output) { }
 #' )
 #' }
-ukcehtheme <- function(theme = NULL) {
+ukceh_pick_theme <- function(theme = NULL) {
   # Check that theme exists
   if (is.null(theme) || !theme %in% allThemes()) {
     stop(theme, " is not an available theme. Valid themes are: ",
