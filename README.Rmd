@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 
 This repository was forked directly from the [UKCEH_shiny_theming repository](https://github.com/NERC-CEH/UKCEH_shiny_theming),
 to see if this guidance could be turned into a package. The original authors are Simon Rolph and Kate Randall. Although it uses
-`bslib` both the name and functionality were heavily influenced by `shinythemes`.
+`bslib`, both the name and functionality were heavily influenced by `shinythemes`.
 
 ## Installation
 
@@ -90,18 +90,21 @@ See https://rstudio.github.io/thematic/ for more details.
 
 The UKCEH colours are defined here: https://brandroom.ceh.ac.uk/sites/default/files/2022-01/UKCEH_Colour_Guidelines.pdf
 
-Here they are in hex code if you want to use them in your plots. For example if you have a bar plot use the hero colour for the bars.
+The hex code are stored in the `/data/` folder of this package if you want to use them in your plots. For example if you have a bar plot use the "hero" colour for the bars. You can obtain them using the `ukceh_get_colours()` function.
 
 ```{r colours}
-logo_colours <- c("#007AC0","#59B444")
+# Say you want to obtain the UKCEH logo colours
+logo_colours <- ukceh_get_colours("logo")
 
-hero_colour <- '#0483A4'
+# Or the primary colour palette for UKCEh
+primary_palette <- ukceh_get_colours("primary palette")
 
-primary_palette <- c("#292C2F",'#1685A3','#EAEFEC')
+# To see all the different options, call:
+names(ukceh_colours)
 
-highlight_colour <- c("#F49633")
-  
-extended_colour_palette <- c("#8f7158","#fee9cd","#90c064","#37a635","#00883c","047e56","007370","#0383a4","#c9e7f2","34b8c7","009dcb","227fc1","0a5da4","00678e","f39532")
+# You don't need to use the function, you can also use:
+ukceh_colours$logo
+
 ```
 
 ## Details: changing primary colours and fonts with `{bslib}`

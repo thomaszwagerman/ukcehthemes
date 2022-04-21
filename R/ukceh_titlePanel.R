@@ -1,6 +1,9 @@
 #' UKCEH titlePanel replacement
-#' @param title 
-#' @param windowTitle 
+#' @param apptitle the title of the app itself.
+#' 
+#' @details this function replaces titlePanel() and adds a title in the format
+#' "`apptitle` | UK Centre for Ecology and Hydrology", the UKCEH logo and a
+#' favicon for the browser tab.
 #'
 #' @return
 #' @export
@@ -21,17 +24,22 @@
 #' )
 #' 
 #' }
-ukceh_titlePanel <- function(title = "UKCEH Shiny app", windowTitle = title){
-  
+ukceh_titlePanel <- function(apptitle = "UKCEH Shiny app"){
   div(
-    img(src="https://www.ceh.ac.uk/sites/default/files/images/theme/ukceh_logo_long_720x170_rgb.png",style="height: 50px;vertical-align:middle;"),
+    img(
+      src="https://www.ceh.ac.uk/sites/default/files/images/theme/ukceh_logo_long_720x170_rgb.png",
+      style="height: 50px;vertical-align:middle;"),
     
     h2(  
-      title,
+      apptitle,
       style ='vertical-align:middle; display:inline;padding-left:40px;'
     ),
-    tagList(tags$head(tags$title(paste0(windowTitle," | UK Centre for Ecology & Hydrology")),
-                      tags$link(rel="shortcut icon", href="https://brandroom.ceh.ac.uk/themes/custom/ceh/favicon.ico"))),
+    tagList(tags$head(
+      tags$title(
+        paste0(apptitle, " | UK Centre for Ecology & Hydrology")),
+      tags$link(
+        rel="shortcut icon",
+        href="https://brandroom.ceh.ac.uk/themes/custom/ceh/favicon.ico"))),
     style = "padding: 30px;"
   )
 }

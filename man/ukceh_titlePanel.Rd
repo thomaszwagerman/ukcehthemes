@@ -4,18 +4,21 @@
 \alias{ukceh_titlePanel}
 \title{UKCEH titlePanel replacement}
 \usage{
-ukceh_titlePanel(title = "UKCEH Shiny app", windowTitle = title)
+ukceh_titlePanel(apptitle = "UKCEH Shiny app")
 }
 \arguments{
-\item{title}{}
-
-\item{windowTitle}{}
+\item{apptitle}{the title of the app itself.}
 }
 \value{
 
 }
 \description{
 UKCEH titlePanel replacement
+}
+\details{
+this function replaces titlePanel() and adds a title in the format
+"\code{apptitle} | UK Centre for Ecology and Hydrology", the UKCEH logo and a
+favicon for the browser tab.
 }
 \examples{
 \dontrun{

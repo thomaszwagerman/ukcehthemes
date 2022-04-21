@@ -28,11 +28,11 @@ ukceh_pick_theme <- function(theme = NULL) {
          paste(allThemes(), collapse = ", "), ".")
   }
   
-  source(paste0("inst/", theme, ".R"))
+  source(paste0("themes/", theme, ".R"))
   return(get(theme))
 }
 
 allThemes <- function() {
-  themes <- dir("inst")
+  themes <- dir("themes/")
   sub(".R", "", themes)
 }
