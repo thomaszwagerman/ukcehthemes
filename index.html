@@ -94,7 +94,7 @@
 <div class="section level2">
 <h2 id="incorporating-the-changes-into-your-shiny-app">Incorporating the changes into your shiny app<a class="anchor" aria-label="anchor" href="#incorporating-the-changes-into-your-shiny-app"></a>
 </h2>
-<p>In the <code>/inst</code> folder we define various UKCEH themes. They need to be included in the <code><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidPage()</a></code> function when defining <code>ui</code>. This is an example using the sidebar layout.</p>
+<p>In the <code>/themes</code> folder UKCEH themes are pre-defined, so there is no need to copy and paste or write your own. They need to be included in the <code><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidPage()</a></code> function when defining <code>ui</code>. This is an example using the sidebar layout, using the <code><a href="reference/ukceh_pick_theme.html">ukceh_pick_theme()</a></code> function we choose the “generic” UKCEH theme. This is currently the only theme available.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidPage</a></span><span class="op">(</span>
   <span class="co"># Defining the ukceh elements of the theme</span>
@@ -145,7 +145,7 @@
 <p>The <code>bslib</code> package is designed for theming shiny apps and can be used to change some universal elements like colours and fonts <a href="https://shiny.rstudio.com/articles/themes.html" class="external-link uri">https://shiny.rstudio.com/articles/themes.html</a></p>
 <p>The UKCEH font is Montserrat. It is available on Google fonts: <a href="https://fonts.google.com/specimen/Montserrat" class="external-link uri">https://fonts.google.com/specimen/Montserrat</a></p>
 <p>These settings make the most of the the existing UKCEH colour palette and sets the correct fonts.</p>
-<p>In this case the “base” UKCEH theme is called “generic”. Feel free to add your own.</p>
+<p>In this case the “base” UKCEH theme is called “generic”. Feel free to add your own. The code below is stored in the <code>/themes</code> folder, which is automatically loaded in when <code><a href="https://rdrr.io/r/base/library.html" class="external-link">library(ukcehthemes)</a></code> is called, so no need to copy and paste.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/bslib/" class="external-link">bslib</a></span><span class="op">)</span>
 
@@ -157,10 +157,13 @@
   success <span class="op">=</span> <span class="st">"#37a635"</span>,
   info <span class="op">=</span> <span class="st">"#34b8c7"</span>,
   warning <span class="op">=</span> <span class="st">"#F49633"</span>,
-  base_font <span class="op">=</span> <span class="fu"><a href="https://rstudio.github.io/bslib/reference/font_face.html" class="external-link">font_link</a></span><span class="op">(</span>family <span class="op">=</span> <span class="st">"Montserrat"</span>,href <span class="op">=</span> <span class="st">"https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&amp;display=swap"</span><span class="op">)</span>
+  base_font <span class="op">=</span> <span class="fu"><a href="https://rstudio.github.io/bslib/reference/font_face.html" class="external-link">font_link</a></span><span class="op">(</span>family <span class="op">=</span> <span class="st">"Montserrat"</span>,
+                        href <span class="op">=</span> <span class="st">"https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&amp;display=swap"</span><span class="op">)</span>
 <span class="op">)</span> |&gt;  
   <span class="fu"><a href="https://rstudio.github.io/bslib/reference/bs_bundle.html" class="external-link">bs_add_variables</a></span><span class="op">(</span><span class="st">"headings-font-weight"</span> <span class="op">=</span> <span class="fl">600</span><span class="op">)</span>
 
+<span class="co"># This line is not stored in the original script, </span>
+<span class="co"># but demonstrates how to preview the theme.</span>
 <span class="fu"><a href="https://rstudio.github.io/bslib/reference/bs_theme_preview.html" class="external-link">bs_theme_preview</a></span><span class="op">(</span><span class="va">generic</span><span class="op">)</span></code></pre></div>
 <p>You can preview a theme with <code><a href="https://rstudio.github.io/bslib/reference/bs_theme_preview.html" class="external-link">bs_theme_preview()</a></code> which brings up a webpage like so:</p>
 <p><em>Inputs:</em></p>
@@ -183,17 +186,22 @@
 <p>The favicon is the tiny little image that appears in the tab of the web browser, it can be accessed direct via a web link from the brand room <a href="https://brandroom.ceh.ac.uk/themes/custom/ceh/favicon.ico" class="external-link uri">https://brandroom.ceh.ac.uk/themes/custom/ceh/favicon.ico</a> so we don’t need to download it ourselves.</p>
 <p>Here is a drop in replacement of that function which also adds the UKCEH logo and adds <code>| UK Centre for Ecology and Hydrology</code> after the title in the tab.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ukceh_titlePanel</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">title</span> <span class="op">=</span> <span class="st">"UKCEH Shiny app"</span>, <span class="va">windowTitle</span> <span class="op">=</span> <span class="va">title</span><span class="op">)</span><span class="op">{</span>
-  
-  <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html" class="external-link">div</a></span><span class="op">(</span>
-    <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html" class="external-link">img</a></span><span class="op">(</span>src<span class="op">=</span><span class="st">"https://www.ceh.ac.uk/sites/default/files/images/theme/ukceh_logo_long_720x170_rgb.png"</span>,style<span class="op">=</span><span class="st">"height: 50px;vertical-align:middle;"</span><span class="op">)</span>,
-      
-    <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html" class="external-link">h2</a></span><span class="op">(</span>  
-      <span class="va">title</span>,
-      style <span class="op">=</span><span class="st">'vertical-align:middle; display:inline;padding-left:40px;'</span>
+<code class="sourceCode R"><span class="va">ukceh_titlePanel</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">apptitle</span> <span class="op">=</span> <span class="st">"UKCEH Shiny app"</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu">htmltools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html" class="external-link">div</a></span><span class="op">(</span>
+    <span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html" class="external-link">img</a></span><span class="op">(</span>
+      src <span class="op">=</span> <span class="st">"https://www.ceh.ac.uk/sites/default/files/images/theme/ukceh_logo_long_720x170_rgb.png"</span>,
+      style <span class="op">=</span> <span class="st">"height: 50px;vertical-align:middle;"</span><span class="op">)</span>,
+
+    <span class="fu">htmltools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html" class="external-link">h2</a></span><span class="op">(</span>
+      <span class="va">apptitle</span>,
+      style <span class="op">=</span> <span class="st">"vertical-align:middle; display:inline;padding-left:40px;"</span>
     <span class="op">)</span>,
-    <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/tagList.html" class="external-link">tagList</a></span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">head</span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">title</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">windowTitle</span>,<span class="st">" | UK Centre for Ecology &amp; Hydrology"</span><span class="op">)</span><span class="op">)</span>,
-                      <span class="va">tags</span><span class="op">$</span><span class="fu">link</span><span class="op">(</span>rel<span class="op">=</span><span class="st">"shortcut icon"</span>, href<span class="op">=</span><span class="st">"https://brandroom.ceh.ac.uk/themes/custom/ceh/favicon.ico"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,
+    <span class="fu">htmltools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/tagList.html" class="external-link">tagList</a></span><span class="op">(</span><span class="va">tags</span><span class="op">$</span><span class="fu">head</span><span class="op">(</span>
+      <span class="va">tags</span><span class="op">$</span><span class="fu">title</span><span class="op">(</span>
+        <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">apptitle</span>, <span class="st">" | UK Centre for Ecology &amp; Hydrology"</span><span class="op">)</span><span class="op">)</span>,
+      <span class="va">tags</span><span class="op">$</span><span class="fu">link</span><span class="op">(</span>
+        rel <span class="op">=</span> <span class="st">"shortcut icon"</span>,
+        href <span class="op">=</span> <span class="st">"https://brandroom.ceh.ac.uk/themes/custom/ceh/favicon.ico"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,
     style <span class="op">=</span> <span class="st">"padding: 30px;"</span>
   <span class="op">)</span>
 <span class="op">}</span></code></pre></div>
