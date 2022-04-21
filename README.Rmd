@@ -25,7 +25,7 @@ to see if this guidance could be turned into a package. The original authors are
 
 You can install the development version of ukcehthemes from [GitHub](https://github.com/) with:
 
-```{r installation}
+```{r installation, eval = FALSE}
 # install.packages("devtools")
 devtools::install_github("thomaszwagerman/ukcehthemes")
 ```
