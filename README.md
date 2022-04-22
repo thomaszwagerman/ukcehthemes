@@ -109,7 +109,7 @@ the “hero” colour for the bars. You can obtain them using the
 logo_colours <- ukceh_get_colours("logo")
 
 # Or the primary colour palette for UKCEh
-primary_palette <- ukceh_get_colours("primary palette")
+primary_palette <- ukceh_get_colours("primary_palette")
 
 # To see all the different options, call:
 names(ukceh_colours)

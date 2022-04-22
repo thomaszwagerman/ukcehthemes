@@ -4,7 +4,7 @@
 \alias{ukceh_get_colours}
 \title{Request a UKCEH colour palette}
 \usage{
-ukceh_get_colours(palette_name)
+ukceh_get_colours(palette_name = NA)
 }
 \arguments{
 \item{palette_name}{the name of the colour palette}
