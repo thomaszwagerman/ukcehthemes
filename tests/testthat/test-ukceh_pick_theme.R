@@ -8,5 +8,6 @@
 
 test_that("returns warning", {
   expect_error(ukceh_pick_theme())
-  expect_error(ukceh_pick_theme("random string"))
+  expect_error(ukceh_pick_theme("random string"),
+               "is not an available theme. Valid themes are: .")
 })
