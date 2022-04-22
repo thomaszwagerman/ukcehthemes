@@ -19,7 +19,6 @@ The result of this function should be used as the \code{theme} argument for
 }
 \examples{
 if(interactive()) {
-library(shiny)
 library(ukcehthemes)
 shinyApp(
   ui = fluidPage(theme = ukceh_pick_theme("generic"),

@@ -12,7 +12,6 @@
 #'
 #' @examples
 #' if(interactive()) {
-#' library(shiny)
 #' library(ukcehthemes)
 #' shinyApp(
 #'   ui = fluidPage(theme = ukceh_pick_theme("generic"),

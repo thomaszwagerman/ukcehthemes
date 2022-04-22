@@ -193,20 +193,20 @@ the tab.
 ``` r
 ukceh_titlePanel <- function(apptitle = "UKCEH Shiny app") {
   htmltools::div(
-    shiny::img(
+    htmltools::img(
       src = "https://www.ceh.ac.uk/sites/default/files/images/theme/ukceh_logo_long_720x170_rgb.png",
       style = "height: 50px;vertical-align:middle;"),
-
     htmltools::h2(
       apptitle,
       style = "vertical-align:middle; display:inline;padding-left:40px;"
     ),
-    htmltools::tagList(tags$head(
-      tags$title(
-        paste0(apptitle, " | UK Centre for Ecology & Hydrology")),
-      tags$link(
-        rel = "shortcut icon",
-        href = "https://brandroom.ceh.ac.uk/themes/custom/ceh/favicon.ico"))),
+    htmltools::tagList(
+      htmltools::tags$head(
+        htmltools::tags$title(
+          paste0(apptitle, " | UK Centre for Ecology & Hydrology")),
+        htmltools::tags$link(
+          rel = "shortcut icon",
+          href = "https://brandroom.ceh.ac.uk/themes/custom/ceh/favicon.ico"))),
     style = "padding: 30px;"
   )
 }
